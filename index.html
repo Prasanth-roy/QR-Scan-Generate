@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Scanner & Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="particle-bg"></canvas>
+  <div id="splash" class="splash-screen">
+    <h1>QR Scanner & Generator</h1>
+    <div class="splash-icons">
+      <img src="https://img.icons8.com/ios-filled/80/ffffff/qr-code.png" alt="Scanner Icon">
+      <img src="https://img.icons8.com/ios-filled/80/ffffff/qr-code.png" alt="Generator Icon">
+    </div>
+  </div>
+  <div id="home" class="home-screen">
+    <div class="header">
+      <h1>MPST ROY</h1>
+      <div class="header-icons">
+        <a href="https://linkedin.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/32/ffffff/linkedin.png" alt="LinkedIn">
+        </a>
+        <a href="https://github.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/32/ffffff/github.png" alt="GitHub">
+        </a>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <button onclick="showScanner()">QR Scanner</button>
+      </div>
+      <div class="card">
+        <button onclick="showGenerator()">QR Generator</button>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-icons">
+        <a href="https://facebook.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/32/ffffff/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/32/ffffff/instagram-new.png" alt="Instagram">
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/32/ffffff/linkedin.png" alt="LinkedIn">
+        </a>
+        <a href="https://github.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/32/ffffff/github.png" alt="GitHub">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="scanner" class="scanner-screen">
+    <div class="video-container">
+      <video id="video" width="400" height="400"></video>
+      <button onclick="openGallery()" class="gallery-btn">
+        <img src="https://img.icons8.com/ios-filled/32/ffffff/image.png" alt="Gallery">
+      </button>
+    </div>
+    <input type="file" id="image-input" accept="image/*" style="display: none;">
+    <canvas id="qr-canvas" style="display: none;"></canvas>
+    <div id="qr-result">Scanning...</div>
+    <div id="qr-action" class="action-container"></div>
+    <button onclick="backToHome()">Back</button>
+  </div>
+  <div id="generator" class="generator-screen">
+    <input id="qr-input" type="text" placeholder="Enter URL to generate QR code" class="search-box">
+    <div class="generator-buttons">
+      <button onclick="generateQR()" class="action-btn generate-btn">
+        <span>Generate QR</span>
+      </button>
+      <button onclick="downloadQR()" class="action-btn download-btn">
+        <img src="https://img.icons8.com/ios-filled/32/ffffff/download.png" alt="Download">
+        <span>Download QR</span>
+      </button>
+    </div>
+    <div id="qr-status" class="status-message"></div>
+    <div id="qr-generated"></div>
+    <button onclick="backToHome()" class="back-btn">Back</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
